@@ -30,11 +30,11 @@ public class Transaction {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "benificier_id")
-    private Benificier benificier; // brahim | null
+    private Benificier benificier; // brahim | null in cas of facture
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "account_id", nullable = false)
-    private Account account; // dyal raji  |
+    private Account account; // dyal raji // hada ghadi tan9as meno l amount
 
 
 }

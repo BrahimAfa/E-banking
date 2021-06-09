@@ -1,5 +1,7 @@
-package com.ensas.ebanking.models;
+package com.ensas.ebanking.vo;
 
+import com.ensas.ebanking.models.Transaction;
+import com.ensas.ebanking.models.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,21 +12,15 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "ACCOUNT")
 @Data
 @ToString
-public class Account {
-    @Id
+public class AccountVo {
     private long id;
     private String accountNum; // 836577658273 + 12NumRandom
     private double balance;
     private String name;
     private String currency;
     private String type;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "client_id", nullable = false)
-    private User client;
-    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Transaction> transactions;
+    private ClientVo client;
+    private List<TransactionVo> transactions;
 }

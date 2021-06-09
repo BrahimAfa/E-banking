@@ -17,4 +17,6 @@ public class ClientVo {
     private String username;
     private Set<RoleVo> roles;
     private String password; //ignore this in serializing
+    contractStatus
+    /contract/clientId {status:"tirminer"}
 }

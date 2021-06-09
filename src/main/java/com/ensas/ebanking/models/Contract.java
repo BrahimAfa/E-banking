@@ -17,17 +17,13 @@ public class Contract {
     @Id
     private long id;
     private String name;
-    private String type;
-    private Date dateD;
-    private Date dateF;
-    private String status;
+    private String status; // Blocked, Terminated, Active
+    private Date dateD = new Date();
+    private Date dateF;// + NOW + 5ANS => WICH WILL BE A GLOBAL PARAMETRE
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     private User client;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "agnet_id", nullable = false)
-    private User agent; // who created the contract
 
 
 }

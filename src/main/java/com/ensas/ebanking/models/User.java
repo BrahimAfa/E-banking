@@ -35,6 +35,9 @@ public class User implements Serializable {
     @Length(min = 5, message = "*Your First Name must have at least 5 characters")
     private String lastname;
 
+    @Column(name = "IS_ACTIVE")
+    private boolean isActive;
+
     @Email(message = "*Please provide a valid Email")
     @NotEmpty(message = "*Please provide an email")
     @Column(name = "EMAIL")
@@ -70,6 +73,8 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY,  cascade = CascadeType.ALL)
     private List<Account> accounts;
 
-    private  User responableAgent;
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "agnet_id", nullable = false)
+    private  User responsableAgent;
 
 }
