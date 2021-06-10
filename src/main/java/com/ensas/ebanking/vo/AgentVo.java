@@ -11,8 +11,16 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AgentVo {
+    private long id;
     private String firstname;
     private String lastname;
     private String email;
     private String username;
-    private Set<RoleVo> roles;}
+    private Set<RoleVo> roles;
+
+    public AgentVo (long id){
+        this.id=id;
+    }
+}
+
+

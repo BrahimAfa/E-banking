@@ -16,6 +16,7 @@ import java.util.Collection;
 @ToString
 public class Benificier {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String accountNum;
     private String firstname;
@@ -24,6 +25,6 @@ public class Benificier {
     private String email;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "client_id", nullable = false)
-    private User client;
+    private User client; // from jwt
 
 }

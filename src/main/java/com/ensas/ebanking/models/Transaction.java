@@ -16,6 +16,8 @@ import java.util.Date;
 @ToString
 public class Transaction {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+
     private long id;
     private double amount;
     private String transactionType; // debit + or credit -;
@@ -23,10 +25,6 @@ public class Transaction {
     private String name;
     private String description;
     private Date cretaedAt = new Date();
-
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "client_id", nullable = false)
-    private User client; // raji | brahim
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "benificier_id")

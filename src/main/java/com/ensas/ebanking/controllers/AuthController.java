@@ -9,10 +9,13 @@ import com.ensas.ebanking.payload.response.MessageResponse;
 import com.ensas.ebanking.security.jwt.JwtUtils;
 import com.ensas.ebanking.security.services.UserDetailsImpl;
 import com.ensas.ebanking.services.UserService;
+import com.ensas.ebanking.utils.AbstractConverter;
 import com.ensas.ebanking.utils.ModelValidator;
+import com.ensas.ebanking.vo.ClientVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -47,6 +50,10 @@ public class AuthController {
 	@Autowired
 	UserService userService;
 
+	@Autowired
+	@Qualifier("clientConverter")
+	private AbstractConverter<User, ClientVo> clientConverter;
+
 	@PostMapping
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 		Authentication authentication;
@@ -71,5 +78,11 @@ public class AuthController {
 				userDetails.getEmail(),
 				userDetails.getUser().getFirstname(),
 				userDetails.getUser().getLastname()));
+	}
+
+	@GetMapping("/me")
+	public ResponseEntity<?> me(Authentication auth) {
+		UserDetailsImpl j = (UserDetailsImpl)auth.getPrincipal();
+		return ResponseEntity.ok(clientConverter.toVo(j.getUser()));
 	}
 }

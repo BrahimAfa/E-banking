@@ -16,6 +16,7 @@ import java.util.List;
 @ToString
 public class Agency {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
     private String adress;
@@ -23,4 +24,7 @@ public class Agency {
     private String tele;
     @OneToMany(mappedBy = "agency", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<User> users; // could be clients or employees;
+    public Agency(long id){
+        this.id = id;
+    }
 }

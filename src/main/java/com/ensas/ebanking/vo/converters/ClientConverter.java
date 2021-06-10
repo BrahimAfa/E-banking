@@ -18,6 +18,8 @@ public class ClientConverter extends AbstractConverter<User, ClientVo> {
         item.setEmail(vo.getEmail());
         item.setFirstname(vo.getFirstname());
         item.setLastname(vo.getLastname());
+        item.setCIN(vo.getCIN());
+        item.setAccounts(new AccountConverter().toItem(vo.getAccounts()));
         item.setUsername(vo.getUsername());
         if (vo.getRoles()!=null) item.setRoles(new RoleConverter().toItem(vo.getRoles().stream().collect(Collectors.toList())).stream().collect(Collectors.toSet()));
         return item;
@@ -29,9 +31,11 @@ public class ClientConverter extends AbstractConverter<User, ClientVo> {
         ClientVo vo = new ClientVo();
         vo.setEmail(item.getEmail());
         vo.setFirstname(item.getFirstname());
+        vo.setCIN(item.getCIN());
         vo.setLastname(item.getLastname());
+        vo.setAccounts(new AccountConverter().toVo(item.getAccounts()));
         vo.setUsername(item.getUsername());
-        vo.setRoles(new RoleConverter().toVo(item.getRoles().stream().collect(Collectors.toList())).stream().collect(Collectors.toSet()));
+        // vo.setRoles(new RoleConverter().toVo(item.getRoles().stream().collect(Collectors.toList())).stream().collect(Collectors.toSet()));
         return vo;
     }
 }

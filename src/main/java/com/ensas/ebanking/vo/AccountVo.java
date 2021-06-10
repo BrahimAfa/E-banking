@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @AllArgsConstructor
@@ -17,10 +18,11 @@ import java.util.List;
 public class AccountVo {
     private long id;
     private String accountNum; // 836577658273 + 12NumRandom
-    private double balance;
+    private double balance=0;
     private String name;
-    private String currency;
-    private String type;
+    private String currency; // devis
+    private String type; // premium or standard
     private ClientVo client;
+    private Date createdAt;
     private List<TransactionVo> transactions;
 }

@@ -16,6 +16,7 @@ import javax.persistence.*;
 @ToString
 public class Demande {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String ville;
     private String status; // pending ; accteped ==> accepted change agency or declined; Cancelled

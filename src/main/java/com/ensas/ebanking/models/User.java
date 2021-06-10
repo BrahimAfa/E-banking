@@ -16,7 +16,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "CLIENT")
+@Table(name = "USER")
 @Data
 @ToString
 public class User implements Serializable {
@@ -36,7 +36,7 @@ public class User implements Serializable {
     private String lastname;
 
     @Column(name = "IS_ACTIVE")
-    private boolean isActive;
+    private boolean isActive = true;
 
     @Email(message = "*Please provide a valid Email")
     @NotEmpty(message = "*Please provide an email")
@@ -70,11 +70,14 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY,  cascade = CascadeType.ALL)
     private List<Benificier> benificiers;
 
-    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY,  cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
     private List<Account> accounts;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "agnet_id", nullable = false)
     private  User responsableAgent;
 
+    public User(long id){
+        this.userId=id;
+    }
 }

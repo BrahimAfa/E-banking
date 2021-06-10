@@ -1,9 +1,12 @@
 package com.ensas.ebanking.services;
 
 import com.ensas.ebanking.exceptions.ModelNotFoundException;
+import com.ensas.ebanking.models.Account;
 import com.ensas.ebanking.models.User;
+import com.ensas.ebanking.repositories.AccountRepository;
 import com.ensas.ebanking.repositories.UserRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,9 +14,11 @@ import java.util.Optional;
 @Service
 public class UserService {
     UserRepository clientRepository;
+    AccountRepository accountRepository;
 
-    public UserService(UserRepository clientRepository) {
+    public UserService(UserRepository clientRepository,AccountRepository accountRepository) {
         this.clientRepository = clientRepository;
+        this.accountRepository= accountRepository;
     }
 
     public List<User> getAllClients(){
@@ -36,8 +41,26 @@ public class UserService {
                 .orElseThrow(() -> new ModelNotFoundException("Client" ,id));
     }
 
+    @Transactional
     public User saveClient(User user){
-        return clientRepository.save(user);
+        List<Account> accounts= user.getAccounts();
+        user.setAccounts(null);
+        User userSaved = clientRepository.save(user);
+        System.out.println(userSaved);
+        if(accounts!=null){
+            for (Account a:accounts ) {
+                System.out.println("BEFOR CLIEBR");
+                System.out.println(a);
+                a.setClient(userSaved);
+                System.out.println("BEFOR ACCOUNT");
+
+                System.out.println(a);
+                accountRepository.save(a);
+            }
+        }
+        User u = clientRepository.findById(userSaved.getUserId()).get();
+        System.out.println(u);
+        return u;
     }
 
     public User updateClient(User user, long id){
