@@ -23,4 +23,5 @@ public class DemandeVo {
     private ClientVo client;
     private AccountVo account; // li ghadi n0so meno 55 dh;
     private AgencyVo agnceToTransfer;
+    private String motif;
 }

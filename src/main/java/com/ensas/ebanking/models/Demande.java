@@ -21,6 +21,7 @@ public class Demande {
     private String ville;
     private String status; // pending ; accteped ==> accepted change agency or declined; Cancelled
     private String type; // transfer
+    private String motif; // transfer
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "client_id", nullable = false)

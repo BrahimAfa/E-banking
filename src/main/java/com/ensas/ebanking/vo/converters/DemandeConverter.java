@@ -16,6 +16,8 @@ public class DemandeConverter extends AbstractConverter<Demande, DemandeVo> {
         if (vo == null) return null;
         Demande item = new Demande();
         item.setId(vo.getId());
+        item.setMotif(vo.getMotif());
+
         item.setAgnceToTransfer(new AgencyConverter().toItem(vo.getAgnceToTransfer()));
         item.setClient(new ClientConverter().toItem(vo.getClient()));
         item.setType(vo.getType());
@@ -33,6 +35,7 @@ public class DemandeConverter extends AbstractConverter<Demande, DemandeVo> {
         vo.setAgnceToTransfer(new AgencyConverter().toVo(item.getAgnceToTransfer()));
         vo.setClient(new ClientConverter().toVo(item.getClient()));
         vo.setType(item.getType());
+        vo.setMotif(item.getMotif());
         vo.setAccount(new AccountConverter().toVo(item.getAccount()));
         vo.setStatus(item.getStatus());
         vo.setVille(item.getVille());
