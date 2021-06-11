@@ -13,6 +13,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ClientVo {
+    private long id;
     private String firstname;
     private String lastname;
     private String email;
