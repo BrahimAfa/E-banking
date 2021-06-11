@@ -56,8 +56,8 @@ public class BenificierController {
         if(bindingResult.hasErrors()) {
             throw new ClientValidationException(ModelValidator.getErrorsFromBindingResult(bindingResult));
         }
-        UserDetailsImpl j = (UserDetailsImpl)auth.getPrincipal();
         Benificier ben = benificierConverter.toItem(benificier);
+        UserDetailsImpl j = (UserDetailsImpl)auth.getPrincipal();
         ben.setClient(j.getUser());
         return benificierConverter.toVo(userService.saveBenificier(ben));
     }

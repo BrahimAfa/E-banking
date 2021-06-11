@@ -5,6 +5,7 @@ import com.ensas.ebanking.models.Account;
 import com.ensas.ebanking.models.Demande;
 import com.ensas.ebanking.models.Role;
 import com.ensas.ebanking.models.Demande;
+import com.ensas.ebanking.security.services.UserDetailsImpl;
 import com.ensas.ebanking.services.TransactionService;
 import com.ensas.ebanking.services.DemandeService;
 import com.ensas.ebanking.utils.AbstractConverter;
@@ -53,11 +54,13 @@ public class DemandeController {
     }
 
     @PostMapping
-    DemandeVo create(@RequestBody @Valid DemandeVo demandevo, BindingResult bindingResult) {
+    DemandeVo create(@RequestBody @Valid DemandeVo demandevo, BindingResult bindingResult,Authentication auth) {
         if(bindingResult.hasErrors()) {
             throw new ClientValidationException(ModelValidator.getErrorsFromBindingResult(bindingResult));
         }
         Demande demande = demandeConverter.toItem(demandevo);
+        UserDetailsImpl j= (UserDetailsImpl)auth.getPrincipal();
+        demande.setClient(j.getUser());
         return demandeConverter.toVo(demandeService.saveDemande(demande));
     }
 
