@@ -20,6 +20,8 @@ public class ClientVo {
     private String email;
     private String username;
     private String tele;
+    private String adress;
+
     private String CIN;
     private Set<RoleVo> roles;
     private String password; //ignore this in serializing

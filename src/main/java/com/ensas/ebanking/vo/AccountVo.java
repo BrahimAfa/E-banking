@@ -23,6 +23,6 @@ public class AccountVo {
     private String currency; // devis
     private String type; // premium or standard
     private ClientVo client;
-    private Date createdAt;
+    private Date createdAt=new Date();
     private List<TransactionVo> transactions;
 }

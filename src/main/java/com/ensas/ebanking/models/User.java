@@ -30,6 +30,10 @@ public class User implements Serializable {
     @Length(min = 5, message = "*Your Last Name must have at least 5 characters")
     private String firstname;
 
+
+    @Column(name = "ADRESS")
+    private String adress;
+
     @Column(name = "LAST_NAME")
     @NotEmpty(message = "*Please provide your last name")
     @Length(min = 5, message = "*Your First Name must have at least 5 characters")
