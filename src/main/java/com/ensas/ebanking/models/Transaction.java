@@ -26,7 +26,7 @@ public class Transaction {
     private String description;
     private Date cretaedAt = new Date();
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "benificier_id")
     private Benificier benificier; // brahim | null in cas of facture
 
