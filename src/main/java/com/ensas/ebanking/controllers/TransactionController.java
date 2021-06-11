@@ -55,6 +55,12 @@ public class TransactionController {
         return transactionConverter.toVo(transactionService.getOneTransaction(id));
     }
 
+    @GetMapping("/client/{id}")
+    double getCredit(@PathVariable Long id) {
+        return transactionService.getCreditsByClient(id,"CREDIT");
+    }
+
+
     @PutMapping("/{id}")
     int update(@RequestBody TransactionVo transactionVo, @PathVariable Long id) {
         Transaction transaction = transactionConverter.toItem(transactionVo);

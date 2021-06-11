@@ -88,6 +88,13 @@ public class TransactionService {
                 .orElse(null);
     }
 
+    public Double getCreditsByClient(long id,String type){
+        return transactionRepository.sumOfCreditByClient(id,type).orElse(0d);
+    }
+
+
+
+
     public void deleteTransaction(long id){
         transactionRepository.deleteById(id);
     }

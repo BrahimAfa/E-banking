@@ -2,6 +2,7 @@ package com.ensas.ebanking.vo.converters;
 
 import com.ensas.ebanking.models.User;
 import com.ensas.ebanking.utils.AbstractConverter;
+import com.ensas.ebanking.vo.ClientDashboard;
 import com.ensas.ebanking.vo.ClientVo;
 import org.springframework.stereotype.Component;
 
@@ -35,6 +36,13 @@ public class ClientConverter extends AbstractConverter<User, ClientVo> {
         vo.setLastname(item.getLastname());
         vo.setAccounts(new AccountConverter().toVo(item.getAccounts()));
         vo.setUsername(item.getUsername());
+        // vo.setRoles(new RoleConverter().toVo(item.getRoles().stream().collect(Collectors.toList())).stream().collect(Collectors.toSet()));
+        return vo;
+    }
+
+    public ClientDashboard toDashboard(User item) {
+        if (item == null) return null;
+        ClientDashboard vo = new ClientDashboard();
         // vo.setRoles(new RoleConverter().toVo(item.getRoles().stream().collect(Collectors.toList())).stream().collect(Collectors.toSet()));
         return vo;
     }

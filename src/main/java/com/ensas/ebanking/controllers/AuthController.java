@@ -79,10 +79,4 @@ public class AuthController {
 				userDetails.getUser().getFirstname(),
 				userDetails.getUser().getLastname()));
 	}
-
-	@GetMapping("/me")
-	public ResponseEntity<?> me(Authentication auth) {
-		UserDetailsImpl j = (UserDetailsImpl)auth.getPrincipal();
-		return ResponseEntity.ok(clientConverter.toVo(j.getUser()));
-	}
 }
