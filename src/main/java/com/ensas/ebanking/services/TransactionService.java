@@ -41,7 +41,7 @@ public class TransactionService {
         System.out.println(transaction);
 
         System.out.println(benificier);
-        if(transaction.getType().equals("Virment")){
+        if(transaction.getType().equals("VIREMENT")){
             System.out.println("in Virment");
 
             if(benificier.getAccountNum().startsWith("836577658273")){
