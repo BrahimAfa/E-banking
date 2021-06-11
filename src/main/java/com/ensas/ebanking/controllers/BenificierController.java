@@ -52,12 +52,14 @@ public class BenificierController {
     }
 
     @PostMapping
-    BenificierVo create(@RequestBody @Valid BenificierVo benificier, BindingResult bindingResult) {
+    BenificierVo create(@RequestBody @Valid BenificierVo benificier, BindingResult bindingResult,Authentication auth) {
         if(bindingResult.hasErrors()) {
             throw new ClientValidationException(ModelValidator.getErrorsFromBindingResult(bindingResult));
         }
-        Benificier user = benificierConverter.toItem(benificier);
-        return benificierConverter.toVo(userService.saveBenificier(user));
+        UserDetailsImpl j = (UserDetailsImpl)auth.getPrincipal();
+        Benificier ben = benificierConverter.toItem(benificier);
+        ben.setClient(j.getUser());
+        return benificierConverter.toVo(userService.saveBenificier(ben));
     }
 
     @GetMapping("/{id}")
