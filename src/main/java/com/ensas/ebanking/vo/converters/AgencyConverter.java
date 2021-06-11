@@ -33,7 +33,7 @@ public class AgencyConverter extends AbstractConverter<Agency, AgencyVo> {
         vo.setTele(item.getAdress());
         vo.setId(item.getId());
         vo.setVille(item.getVille());
-        vo.setUsers(new ClientConverter().toVo(item.getUsers()));
+        // vo.setUsers(new ClientConverter().toVo(item.getUsers()));
         return vo;
     }
 

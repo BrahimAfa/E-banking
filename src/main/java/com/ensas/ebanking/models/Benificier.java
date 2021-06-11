@@ -23,7 +23,7 @@ public class Benificier {
     private String lastName;
     private String tele;
     private String email;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "client_id", nullable = false)
     private User client; // from jwt
 

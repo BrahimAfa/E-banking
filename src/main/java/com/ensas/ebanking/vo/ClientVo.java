@@ -1,6 +1,7 @@
 package com.ensas.ebanking.vo;
 
 import com.ensas.ebanking.models.Agency;
+import com.ensas.ebanking.models.Benificier;
 import com.ensas.ebanking.models.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,8 +24,9 @@ public class ClientVo {
     private Set<RoleVo> roles;
     private String password; //ignore this in serializing
     private boolean isActive;
-    private Agency agency = new Agency(99);
-    private AgentVo agent = new AgentVo(99);
+    private AgencyVo agency;
+    private AgentVo agent;
+    private List<BenificierVo> benificiers;
 
     private List<AccountVo> accounts;
 

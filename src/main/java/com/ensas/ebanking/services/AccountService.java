@@ -55,7 +55,7 @@ public class AccountService {
                     }else{
                         c.setBalance(c.getBalance()-amount);
                     }
-                    if(c.getBalance()<=0) return null;
+                    // if(c.getBalance()<0) return null;
                     return accountRepository.save(c);
                 }).orElse(null);
     }

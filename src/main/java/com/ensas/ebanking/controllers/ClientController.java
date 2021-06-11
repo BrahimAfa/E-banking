@@ -66,7 +66,6 @@ public class ClientController {
         }
         User user = clientConverter.toItem(client);
 
-        user.setAgency(client.getAgency());
         user.setResponsableAgent(new User(client.getAgent().getId()));
         System.out.println("hellloooo");
 

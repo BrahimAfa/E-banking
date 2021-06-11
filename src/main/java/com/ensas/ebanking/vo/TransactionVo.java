@@ -25,6 +25,4 @@ public class TransactionVo {
     private ClientVo client; // raji | brahim
     private BenificierVo benificier; // brahim | null in cas of facture
     private AccountVo account; // dyal raji // hada ghadi tan9as meno l amount
-
-
 }

@@ -35,7 +35,7 @@ public class BenificierConverter extends AbstractConverter<Benificier, Benificie
         vo.setLastName(item.getLastName());
         vo.setFirstname(item.getFirstname());
         vo.setAccountNum(item.getAccountNum());
-        vo.setClient(new ClientConverter().toVo(item.getClient()));
+        // vo.setClient(new ClientConverter().toVo(item.getClient()));
         return vo;
     }
 }

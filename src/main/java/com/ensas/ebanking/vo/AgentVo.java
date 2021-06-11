@@ -16,7 +16,11 @@ public class AgentVo {
     private String lastname;
     private String email;
     private String username;
+    private String tele;
+    private String CIN;
     private Set<RoleVo> roles;
+    private AgencyVo agency;
+
 
     public AgentVo (long id){
         this.id=id;
