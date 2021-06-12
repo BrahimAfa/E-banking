@@ -21,7 +21,7 @@ public class ClientConverter extends AbstractConverter<User, ClientVo> {
         item.setFirstname(vo.getFirstname());
         item.setLastname(vo.getLastname());
         item.setCIN(vo.getCIN());
-        vo.setAdress(item.getAdress());
+        item.setAdress(vo.getAdress());
         item.setAccounts(new AccountConverter().toItem(vo.getAccounts()));
         item.setUsername(vo.getUsername());
         if (vo.getRoles()!=null) item.setRoles(new RoleConverter().toItem(vo.getRoles().stream().collect(Collectors.toList())).stream().collect(Collectors.toSet()));
