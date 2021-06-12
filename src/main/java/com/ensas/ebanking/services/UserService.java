@@ -69,7 +69,7 @@ public class UserService {
                     if(user.getLastname() != null) c.setFirstname(user.getLastname());
                     if(user.getFirstname() != null) c.setLastname(user.getFirstname());
                     if(user.getPassword() != null) c.setPassword(user.getPassword());
-                    if(user.getRoles() != null) c.setRoles(user.getRoles());
+                    c.setActive(user.isActive());
                     return clientRepository.save(c);
                 })
                 .orElse(null);

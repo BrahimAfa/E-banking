@@ -19,6 +19,7 @@ public class ClientConverter extends AbstractConverter<User, ClientVo> {
         item.setUserId(vo.getId());
         item.setEmail(vo.getEmail());
         item.setFirstname(vo.getFirstname());
+        item.setActive(vo.isActive());
         item.setLastname(vo.getLastname());
         item.setCIN(vo.getCIN());
         item.setAdress(vo.getAdress());
@@ -37,6 +38,7 @@ public class ClientConverter extends AbstractConverter<User, ClientVo> {
         vo.setFirstname(item.getFirstname());
         vo.setCIN(item.getCIN());
         vo.setLastname(item.getLastname());
+        vo.setActive(item.isActive());
         // System.out.println(item.getAgency());
         vo.setAgency(new AgencyConverter().toVo(item.getAgency()));
         // vo.setAgent(new AgentConverter().toVo(item.getResponsableAgent()));
