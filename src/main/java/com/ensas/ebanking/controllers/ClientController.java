@@ -60,13 +60,14 @@ public class ClientController {
     }
 
     @PostMapping
-    ClientVo create(@RequestBody @Valid ClientVo client, BindingResult bindingResult) {
+    ClientVo create(@RequestBody @Valid ClientVo client, BindingResult bindingResult,Authentication auth) {
         if(bindingResult.hasErrors()) {
             throw new ClientValidationException(ModelValidator.getErrorsFromBindingResult(bindingResult));
         }
+        UserDetailsImpl userLog = (UserDetailsImpl)auth.getPrincipal();
         User user = clientConverter.toItem(client);
 
-        user.setResponsableAgent(new User(client.getAgent().getId()));
+        user.setResponsableAgent(userLog.getUser());
         System.out.println("hellloooo");
 
         System.out.println(user);
