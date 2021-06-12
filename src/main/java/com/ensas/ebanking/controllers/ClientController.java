@@ -66,7 +66,7 @@ public class ClientController {
         }
         UserDetailsImpl userLog = (UserDetailsImpl)auth.getPrincipal();
         User user = clientConverter.toItem(client);
-
+        user.setAgency(userLog.getUser().getAgency());
         user.setResponsableAgent(userLog.getUser());
         System.out.println("hellloooo");
 
