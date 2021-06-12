@@ -41,6 +41,10 @@ public class UserService {
                 .orElseThrow(() -> new ModelNotFoundException("Client" ,id));
     }
 
+    public List<User> getByAgencyId(long id){
+        return clientRepository.findByAgencyId(id);
+    }
+
     @Transactional
     public User saveClient(User user){
         List<Account> accounts= user.getAccounts();

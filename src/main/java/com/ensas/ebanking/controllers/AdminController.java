@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 // import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
@@ -24,8 +25,9 @@ import java.util.Set;
 // import static com.ensas.ebanking.enumeration.Role.ROLE_AGENT;
 
 @Controller
+@RequestMapping()
 public class AdminController {
-/*
+    /*
     private BCryptPasswordEncoder passwordEncoder=new BCryptPasswordEncoder();;
     private EmailService emailService=new EmailService();
 
@@ -43,16 +45,15 @@ public class AdminController {
     private ClientRepository clientRepository;
     @Autowired
     private AdminRepository adminRepository;
-
+    */
 
 
     //login
     @GetMapping("/Admin/login")
     public String login(){
-
         return "Admin/login";
     }
-
+    /*
     @GetMapping("/Admin/loginError")
     public String loginerror(String username,String mdp,Model model,HttpSession session){
 

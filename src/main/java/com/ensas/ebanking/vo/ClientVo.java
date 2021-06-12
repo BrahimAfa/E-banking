@@ -21,11 +21,10 @@ public class ClientVo {
     private String username;
     private String tele;
     private String adress;
-
     private String CIN;
-    private Set<RoleVo> roles;
+    private boolean isActive=true;
     private String password; //ignore this in serializing
-    private boolean isActive;
+    private Set<RoleVo> roles;
     private AgencyVo agency;
     private AgentVo agent;
     private List<BenificierVo> benificiers;

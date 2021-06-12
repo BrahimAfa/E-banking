@@ -17,7 +17,10 @@ public class AgentVo {
     private String email;
     private String username;
     private String tele;
+    private String adress;
     private String CIN;
+    private boolean isActive;
+    private String password; //ignore this in serializing
     private Set<RoleVo> roles;
     private AgencyVo agency;
 
