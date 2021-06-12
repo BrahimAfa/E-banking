@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping("agent")
+@RequestMapping("/api/agent")
 @CrossOrigin(origins = {"*"})
 public class AgentController {
     @Autowired

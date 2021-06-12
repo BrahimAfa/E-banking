@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping("client")
+@RequestMapping("/api/client")
 @CrossOrigin(origins = {"*"})
 public class ClientController {
     @Autowired

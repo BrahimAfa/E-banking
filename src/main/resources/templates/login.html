@@ -7,9 +7,9 @@
   <title>E-Banking</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 
-  <link rel="stylesheet" type="text/css"  th:href="@{../css/bootstrap.min.css}">
+  <link rel="stylesheet" type="text/css"  th:href="@{/css/bootstrap.min.css}">
 
-  <link rel="stylesheet" type="text/css" th:href="@{../css/style.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
 
 </head>
 
@@ -18,12 +18,9 @@
   <div class="account-page">
     <div class="account-center">
       <div class="account-box">
-        <form th:action="@{/Admin/loginadmin}" method="post" class="form-signin">
-          <div class="account-logo">
-            <a href="#"><img th:src="@{../img/logo.jpg}" alt=""></a>
-          </div>
+        <form th:action="@{/login}" method="post" class="form-signin">
 
-          <p th:text="${error}" class="text-danger text"></p>
+          <p th:text="ERROR" class="text-danger text"></p>
           <div class="form-group">
             <label class="text">Nom d'utilisateur</label>
             <input type="text" autofocus="" class="form-control" name="username">

@@ -3,6 +3,7 @@ package com.ensas.ebanking.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -19,6 +20,7 @@ import com.ensas.ebanking.security.jwt.AuthTokenFilter;
 import com.ensas.ebanking.security.services.UserDetailsServiceImpl;
 
 @Configuration
+@Order(1)
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(
         // securedEnabled = true,
@@ -62,10 +64,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
+               .antMatcher("/api/**") //<= Security only available for /api/**
                 .authorizeRequests()
                 .antMatchers("/auth/**").permitAll()
          .anyRequest().authenticated();
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
+    }
+    @Configuration
+    public class WebSecurityAdapter extends WebSecurityConfigurerAdapter {
+
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
+            http // <= Security available for others (not /api/)
+                    .authorizeRequests()
+                    .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+                    .antMatchers("/").permitAll()
+                    .antMatchers("/login").permitAll()
+                    .antMatchers("/css/**","/js/**","/img/**","/vendor/**").permitAll()
+                    .anyRequest().authenticated();
+        }
     }
 }

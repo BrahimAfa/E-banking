@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping("transaction")
+@RequestMapping("/api/transaction")
 @CrossOrigin(origins = {"*"})
 public class TransactionController {
 

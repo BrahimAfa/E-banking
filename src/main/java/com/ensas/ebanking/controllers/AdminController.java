@@ -25,7 +25,7 @@ import java.util.Set;
 // import static com.ensas.ebanking.enumeration.Role.ROLE_AGENT;
 
 @Controller
-@RequestMapping()
+@RequestMapping("/")
 public class AdminController {
     /*
     private BCryptPasswordEncoder passwordEncoder=new BCryptPasswordEncoder();;
@@ -49,9 +49,14 @@ public class AdminController {
 
 
     //login
-    @GetMapping("/Admin/login")
+    @GetMapping("/login")
     public String login(){
-        return "Admin/login";
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String loginTo(){
+        return "toClient";
     }
     /*
     @GetMapping("/Admin/loginError")

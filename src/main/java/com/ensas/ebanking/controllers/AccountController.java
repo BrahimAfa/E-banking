@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/account")
+@RequestMapping("/api/account")
 @CrossOrigin(origins = {"*"})
 public class AccountController {
 

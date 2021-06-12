@@ -19,7 +19,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("agency")
+@RequestMapping("/api/agency")
 @CrossOrigin(origins = {"*"})
 public class AgenceController {
     @Autowired
