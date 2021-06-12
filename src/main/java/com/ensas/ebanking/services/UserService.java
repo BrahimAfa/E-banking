@@ -53,16 +53,11 @@ public class UserService {
         if(accounts!=null){
             for (Account a:accounts ) {
                 System.out.println("BEFOR CLIEBR");
-                System.out.println(a);
-                a.setClient(userSaved);
                 System.out.println("BEFOR ACCOUNT");
-
-                System.out.println(a);
                 accountRepository.save(a);
             }
         }
         User u = clientRepository.findById(userSaved.getUserId()).get();
-        System.out.println(u);
         return u;
     }
 
