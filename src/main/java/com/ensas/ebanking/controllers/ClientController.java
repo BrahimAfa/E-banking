@@ -70,7 +70,7 @@ public class ClientController {
         user.setResponsableAgent(userLog.getUser());
         System.out.println("hellloooo");
 
-        System.out.println(user);
+    //    System.out.println(user);
         Set<Role> clientRole = new HashSet<>();
         clientRole.add(new Role(1,"ROLE_CLIENT",true));
         user.setRoles(clientRole);
