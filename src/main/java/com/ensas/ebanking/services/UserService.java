@@ -50,7 +50,6 @@ public class UserService {
         List<Account> accounts= user.getAccounts();
         user.setAccounts(null);
         User userSaved = clientRepository.save(user);
-        System.out.println(userSaved);
         if(accounts!=null){
             for (Account a:accounts ) {
                 System.out.println("BEFOR CLIEBR");
